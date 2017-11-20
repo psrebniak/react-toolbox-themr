@@ -1,6 +1,7 @@
 const CSS_OPTION       = 'styles'
 const JS_OPTION        = 'javascript'
 const OUTPUT_OPTION    = 'output'
+const NAME_OPTION      = 'name'
 const DEFAULT_FILENAME = 'theme'
 const DEFAULT_OUTPUT   = 'src/toolbox'
 const DEFAULT_PATH     = './node_modules/react-toolbox/lib'
@@ -10,6 +11,7 @@ const INPUT_OPTIONS    = [
   'include',
   'customProperties',
   'fixed',
+  NAME_OPTION,
   CSS_OPTION,
   JS_OPTION,
   OUTPUT_OPTION
@@ -55,6 +57,7 @@ const DEFAULT_OPTIONS = {
 module.exports.OUTPUT_OPTION    = OUTPUT_OPTION
 module.exports.CSS_OPTION       = CSS_OPTION
 module.exports.JS_OPTION        = JS_OPTION
+module.exports.NAME_OPTION      = NAME_OPTION
 module.exports.DEFAULT_OPTIONS  = DEFAULT_OPTIONS
 module.exports.DEFAULT_OUTPUT   = DEFAULT_OUTPUT
 module.exports.DEFAULT_FILENAME = DEFAULT_FILENAME

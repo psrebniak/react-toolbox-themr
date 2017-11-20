@@ -14,6 +14,7 @@ const argv = require('yargs')
   .alias('s', 'styles')
   .alias('o', 'output')
   .alias('f', 'fixed')
+  .alias('n', 'name')
   .alias('h', 'help')
   .array('include')
   .describe('c', 'Configuration file pathname')
@@ -23,6 +24,7 @@ const argv = require('yargs')
   .describe('s', 'Pathname to generate CSS theme file')
   .describe('o', 'Output directory for both css and javascript')
   .describe('f', 'Generate fixed, human-readable class names')
+  .describe('n', 'Generate class names in given format (postCSS:generateScopedName)')
   .help('h')
   .epilog('Javi Velasco (@javivelasco)')
   .argv
@@ -44,7 +46,7 @@ const identifiers = require(path.join(rtPath, 'identifiers.js'))
 function processComponent(variables, component) {
   const identifier = identifiers[component]
   const componentPath = path.join(rtPath, getPath(component))
-  return postcssWithModules(identifier, componentPath, variables, rtPath, config.fixed)
+  return postcssWithModules(identifier, componentPath, variables, rtPath, config.fixed, config.name)
 }
 
 mkdirp(path.parse(cssDst).dir)

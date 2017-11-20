@@ -23,9 +23,9 @@ function getResolver(rootPath) {
   })
 }
 
-function getModulesConfig(rootPath, path, fn, fixed) {
+function getModulesConfig(rootPath, path, fn, fixed, nameFormat) {
   return modules({
-    generateScopedName: fixed ? getScopedName : '[hash:base64:5]',
+    generateScopedName: fixed ? getScopedName : (nameFormat || '[hash:base64:5]'),
     getJSON: function (cssFileName, json) {
       fn(json)
     }
@@ -45,14 +45,14 @@ function getScopedName(className, filePath) {
   return 'rt' + folder + file + '-' + className
 }
 
-function postcssWithModules(id, path, variables, rootPath, fixed) {
+function postcssWithModules(id, path, variables, rootPath, fixed, nameFormat) {
   var json
   const cssContent = fs.readFileSync(path, 'utf-8')
   return new Promise(function (resolve) {
     postcss([
       getResolver(rootPath),
       apply,
-      getModulesConfig(rootPath, path, function (_json) { json = _json }, fixed),
+      getModulesConfig(rootPath, path, function (_json) { json = _json }, fixed, nameFormat),
       getCssNextConfig(variables),
       reporter()
     ]).process(cssContent, {
