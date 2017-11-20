@@ -5,7 +5,7 @@ const NAME_OPTION      = 'name'
 const DEFAULT_FILENAME = 'theme'
 const DEFAULT_OUTPUT   = 'src/toolbox'
 const DEFAULT_PATH     = './node_modules/react-toolbox/lib'
-const OUTPUT_OPTIONS   = [ 'path', 'include', 'customProperties', 'css', 'js', 'fixed' ]
+const OUTPUT_OPTIONS   = [ 'path', 'include', 'customProperties', 'css', 'js', 'fixed', 'name' ]
 const INPUT_OPTIONS    = [
   'path',
   'include',
